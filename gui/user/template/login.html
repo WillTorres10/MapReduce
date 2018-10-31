@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.0.0
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+
+<html lang="en">
+  <head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Cadastrar usuário</title>
+    <!-- Icons-->
+    <link href="{% static 'node_modules/@coreui/icons/css/coreui-icons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'node_modules/flag-icon-css/css/flag-icon.min.css'%}" rel="stylesheet">
+    <link href="{% static 'node_modules/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet">
+    <link href="{% static 'node_modules/simple-line-icons/css/simple-line-icons.css'%}" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'vendors/pace-progress/css/pace.min.css'%}" rel="stylesheet">
+  </head>
+  <body class="app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body p-4">
+              <h1>Acessar conta</h1>
+              <p class="text-muted">Informe seus dados logo abaixo</p>
+              {% if mensagem != "" %}
+                <div class="alert alert-danger" role="alert">
+                  {{ mensagem }}
+                </div>
+              {% endif %}
+              {% if sucesso != "" %}
+                <div class="alert alert-success" role="alert">
+                  {{ mensagem }}
+                </div>
+              {% endif %}
+              <form method="post" >
+                {% csrf_token %}
+                <!--User e Email-->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" name="user" type="text" placeholder="Usuário">
+                  </div>
+                <!--Senha-->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="icon-lock"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" name="passoword" type="password" placeholder="Senha">
+                </div>
+            </div>
+            <div class="card-footer p-4 ">
+              <div class="row mb-1">
+                <button class="btn btn-block btn-success" type="submit">Acessar</button>  
+              </div>
+              <div class="row">
+                <a class="btn btn-block btn-primary" href="{%url 'cadastrar'%}">Criar nova conta</a>  
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js'%}"></script>
+    <script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js'%}"></script>
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'node_modules/pace-progress/pace.min.js'%}"></script>
+    <script src="{% static 'node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js'%}"></script>
+    <script src="{% static 'node_modules/@coreui/coreui/dist/js/coreui.min.js'%}"></script>
+  </body>
+</html>
