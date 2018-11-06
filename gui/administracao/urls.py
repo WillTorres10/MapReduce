@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.urls import path
+from . import views
 
 app_name = 'administracao'
 urlpatterns = [
-    path('', lambda req:HttpResponse("Hello World"))
+    path('', views.verifica, name="padrao")
 ]

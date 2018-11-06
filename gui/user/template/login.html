@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Cadastrar usuário</title>
+    <title>Acessar Conta</title>
     <!-- Icons-->
     <link href="{% static 'node_modules/@coreui/icons/css/coreui-icons.min.css' %}" rel="stylesheet">
     <link href="{% static 'node_modules/flag-icon-css/css/flag-icon.min.css'%}" rel="stylesheet">
@@ -60,7 +60,7 @@
                       <i class="icon-lock"></i>
                     </span>
                   </div>
-                  <input class="form-control" name="passoword" type="password" placeholder="Senha">
+                  <input class="form-control" name="pass" type="password" placeholder="Senha">
                 </div>
             </div>
             <div class="card-footer p-4 ">
@@ -68,7 +68,7 @@
                 <button class="btn btn-block btn-success" type="submit">Acessar</button>  
               </div>
               <div class="row">
-                <a class="btn btn-block btn-primary" href="{%url 'cadastrar'%}">Criar nova conta</a>  
+                <a class="btn btn-block btn-primary" href="/usuario/cadastrar">Criar nova conta</a>  
               </div>
             </div>
             </form>

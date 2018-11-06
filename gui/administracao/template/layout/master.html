@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Contar</title>
+    <!-- Icons-->
+    <link href="{% static 'node_modules/@coreui/icons/css/coreui-icons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'node_modules/flag-icon-css/css/flag-icon.min.css' %}" rel="stylesheet">
+    <link href="{% static 'node_modules/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'node_modules/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
+  </head>
+  <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <header class="app-header navbar">
+      <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="Contar">
+        <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="C">
+      </a>
+      <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="nav navbar-nav d-md-down-none">
+        <li class="nav-item px-3">
+          <a class="nav-link" href="#">Inicio</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="#">Computadores</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="#">Trabalhos</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#" style="margin-right: 15px;" role="button" aria-haspopup="true" aria-expanded="false">
+            Olá {{user.username}}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header text-center">
+              <strong>Conta</strong>
+            </div>
+            <div class="divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-lock"></i> Sair</a>
+          </div>
+        </li>
+      </ul>
+      
+    </header>
+    <div class="app-body">
+      <div class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="nav-icon icon-speedometer"></i> Inicio
+              </a>
+            </li>
+            <li class="nav-title">Computadores</li>
+            <li class="nav-item">
+              <a class="nav-link" href="colors.html">
+                <i class="nav-icon icon-drop"></i> Gerenciar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="typography.html">
+                <i class="nav-icon icon-pencil"></i> Cadastrar</a>
+            </li>
+            <li class="nav-title">Trabalhos</li>
+            <li class="nav-item">
+              <a class="nav-link" href="typography.html">
+                <i class="nav-icon icon-pencil"></i> Visualizar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="typography.html">
+                <i class="nav-icon icon-pencil"></i> Criar</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>
+      <main class="main">
+      </main>
+      </aside>
+    </div>
+    <footer class="app-footer">
+      <div>
+        <a href="https://coreui.io">CoreUI</a>
+        <span>&copy; 2018 creativeLabs.</span>
+      </div>
+      <div class="ml-auto">
+        <span>Powered by</span>
+        <a href="https://coreui.io">CoreUI</a>
+      </div>
+    </footer>
+    <!-- CoreUI and necessary plugins-->
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'node_modules/pace-progress/pace.min.js' %}"></script>
+    <script src="{% static 'node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'node_modules/@coreui/coreui/dist/js/coreui.min.js' %}"></script>
+    <!-- Plugins and scripts required by this view-->
+    <script src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <script src="{% static 'node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
