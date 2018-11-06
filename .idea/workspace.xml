@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="433d8225-dadc-4c99-8bec-c10f4fb4f5ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/user/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/administracao/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/administracao/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/administracao/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/administracao/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/administracao/template/layout/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/gui/administracao/template/layout/master.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/administracao/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/administracao/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/gui/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/gui/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/user/template/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/gui/user/template/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/user/template/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/gui/user/template/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/user/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,30 +19,31 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="20" />
+          <entry key="py" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="20" />
+          <entry key="Python" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1860" />
+          <entry key="Python" value="2410" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1860" />
+          <entry key="py" value="2410" />
         </counts>
       </usages-collector>
     </session>
@@ -59,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/gui/user/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="39" lean-forward="true" selection-start-column="39" selection-end-column="39" />
+              <caret column="39" selection-start-column="39" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -67,19 +62,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gui/gui/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="132" column="33" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
+            <state relative-caret-position="509">
+              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/administracao/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gui/administracao/views.py">
+        <entry file="file://$PROJECT_DIR$/gui/administracao/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+            <state relative-caret-position="420">
+              <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <marker date="1541514820465" expanded="true" signature="556:561" ph="..." />
+                <marker date="1541514820465" expanded="true" signature="732:737" ph="..." />
+                <marker date="1541514820465" expanded="true" signature="927:928" ph="..." />
               </folding>
             </state>
           </provider>
@@ -111,8 +120,9 @@
         <option value="$PROJECT_DIR$/gui/administracao/urls.py" />
         <option value="$PROJECT_DIR$/gui/user/urls.py" />
         <option value="$PROJECT_DIR$/gui/user/views.py" />
-        <option value="$PROJECT_DIR$/gui/gui/settings.py" />
         <option value="$PROJECT_DIR$/gui/administracao/views.py" />
+        <option value="$PROJECT_DIR$/gui/gui/settings.py" />
+        <option value="$PROJECT_DIR$/gui/administracao/models.py" />
       </list>
     </option>
   </component>
@@ -127,7 +137,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,33 +144,11 @@
               <item name="SistemasDitribuidos" type="b2602c69:ProjectViewProjectNode" />
               <item name="SistemasDitribuidos" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SistemasDitribuidos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SistemasDitribuidos" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SistemasDitribuidos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SistemasDitribuidos" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="administracao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SistemasDitribuidos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SistemasDitribuidos" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SistemasDitribuidos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SistemasDitribuidos" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,10 +181,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1366" height="704" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1600" height="863" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17423679" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17374763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -245,9 +231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="87" lean-forward="true" selection-start-line="5" selection-start-column="87" selection-end-line="5" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -255,9 +238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="52" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -265,32 +245,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/gui/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="132" column="33" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/user/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="39" lean-forward="true" selection-start-column="39" selection-end-column="39" />
+          <caret column="39" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/gui/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/administracao/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        <state relative-caret-position="135">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/administracao/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+          <folding>
+            <marker date="1541514820465" expanded="true" signature="556:561" ph="..." />
+            <marker date="1541514820465" expanded="true" signature="732:737" ph="..." />
+            <marker date="1541514820465" expanded="true" signature="927:928" ph="..." />
           </folding>
         </state>
       </provider>
