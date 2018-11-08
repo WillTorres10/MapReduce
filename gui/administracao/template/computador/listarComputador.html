@@ -1,0 +1,65 @@
+{%  extends '../layout/master.html' %}
+{% block Titulo %}Listar Computadores{% endblock %}
+
+{% block modal %}
+ <!-- /.modal-->
+          <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title"><b>Configuração: <span id="tituloModal" style="color: #20a8d8"></span></b></h4>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="corpoModal">
+                	<div class="row">
+		                <!--Formulario-->
+		                <div class="col-md-5 p-3">
+		                	Dados máquina<br><br>
+		                	<div id="dadosPC">
+		                		
+		                	</div>
+		                </div>
+		                <!--\.Formulario-->
+		                <!--Gráficos-->
+		                <div class="col-md-7">
+		                	Gráficos
+		                </div>
+		                <!--\.Gráficos-->
+                  	</div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+              <!-- /.modal-content-->
+            </div>
+            <!-- /.modal-dialog-->
+          </div>
+          <!-- /.modal-->
+{% endblock %}
+
+{% block corpo %}
+<div class="row">
+	{% for computador in pc%}
+	<div class="col-md-4">
+		<div class="card" >
+	      <div class="card-body p-3 d-flex align-items-center">
+	        <i class="fa fa-laptop bg-primary p-3 font-2xl mr-3"></i>
+	        <div>
+	          <div class="text-value-sm text-primary">{{ computador.nome }}</div>
+	          <div class="text-muted text-uppercase font-weight-bold small">{{computador.ip}}</div>
+	        </div>
+	      </div>
+	      <div class="card-footer px-3 py-2">
+            <a class="btn-block text-muted d-flex justify-content-between align-items-center"  onclick="buscarDadosComputador({{computador.id}})" data-toggle="modal" data-target="#largeModal">
+              <span class="small font-weight-bold" >Inspesionar</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+	    </div>
+    </div>
+	{% endfor %}
+</div>
+{% endblock %}

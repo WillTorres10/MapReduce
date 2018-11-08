@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Contar</title>
+    <meta name="csrf-token" content="{{csrf_token}}">
+    <title>Contar - {% block Titulo %}{% endblock %}</title>
     <!-- Icons-->
     <link href="{% static 'node_modules/@coreui/icons/css/coreui-icons.min.css' %}" rel="stylesheet">
     <link href="{% static 'node_modules/flag-icon-css/css/flag-icon.min.css' %}" rel="stylesheet">
@@ -16,6 +17,7 @@
     <link href="{% static 'vendors/pace-progress/css/pace.min.css' %}" rel="stylesheet">
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    {% block modal%} {% endblock %}
     <header class="app-header navbar">
       <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
@@ -61,43 +63,46 @@
           <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="index.html">
-                <i class="nav-icon icon-speedometer"></i> Inicio
+                <i class="nav-icon fa fa-home"></i> Inicio
               </a>
             </li>
             <li class="nav-title">Computadores</li>
             <li class="nav-item">
-              <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i> Gerenciar</a>
+              <a class="nav-link" href="/administracao/computador/listar">
+                <i class="nav-icon fa fa-wrench  "></i> Gerenciar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="typography.html">
-                <i class="nav-icon icon-pencil"></i> Cadastrar</a>
+              <a class="nav-link" href="/administracao/computador/cadastrar">
+                <i class="nav-icon fa fa-plus"></i> Cadastrar</a>
             </li>
             <li class="nav-title">Trabalhos</li>
             <li class="nav-item">
               <a class="nav-link" href="typography.html">
-                <i class="nav-icon icon-pencil"></i> Visualizar</a>
+                <i class="nav-icon fa fa-eye"></i> Visualizar</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="typography.html">
-                <i class="nav-icon icon-pencil"></i> Criar</a>
+                <i class="nav-icon fa fa-plus"></i> Criar</a>
             </li>
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
       </div>
       <main class="main">
+        <div class="container-fluid p-3">
+          {% block corpo %}{% endblock %}
+        </div>
       </main>
       </aside>
     </div>
     <footer class="app-footer">
       <div>
-        <a href="https://coreui.io">CoreUI</a>
-        <span>&copy; 2018 creativeLabs.</span>
+        Valextra
+        <span>&copy; 2018</span>
       </div>
       <div class="ml-auto">
-        <span>Powered by</span>
-        <a href="https://coreui.io">CoreUI</a>
+        <span>Disponível no </span>
+        <a href="https://github.com/WillTorres10/MapReduce" target="_blank">Github</a>
       </div>
     </footer>
     <!-- CoreUI and necessary plugins-->
@@ -110,6 +115,7 @@
     <!-- Plugins and scripts required by this view-->
     <script src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
     <script src="{% static 'node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <!-- AJAX para uso do sistema -->
+    <script src="{% static 'js/administracao.js' %}"></script>
   </body>
 </html>

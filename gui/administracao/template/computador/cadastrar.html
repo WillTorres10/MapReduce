@@ -1,0 +1,52 @@
+{%  extends '../layout/master.html' %}
+{% block Titulo %}Cadastrar Computador{% endblock %}
+{% block corpo %}
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+          <div class="card-header">
+            <strong>Cadastrar uma nova máquina</strong>
+          </div>
+          <div class="card-body">
+          	{% if mensagem != "" %}
+          	<div class="alert alert-{{tipo}}" role="alert">{{mensagem}}</div>
+          	{% endif %}
+
+            <form method="post">
+            	{% csrf_token %}
+	            <div class="row">
+	              <div class="col-sm-12">
+	                <div class="form-group">
+	                  <label for="name">Nome</label>
+	                  <input class="form-control" name="name" type="text" placeholder="Nome da Máquina">
+	                </div>
+	              </div>
+	            </div>
+	            <!-- .\row-->
+	            <div class="row">
+	              <div class="col-sm-12">
+	                <div class="form-group">
+	                  <label for="name">IP</label>
+	                  <input class="form-control" name="ip" type="text" placeholder="IP da máquina">
+	                </div>
+	              </div>
+	            </div>
+	            <!-- .\row-->
+	            <div class="row">
+	              <div class="col-sm-12">
+	                <div class="form-group">
+	                  <label for="name">Chave</label>
+	                  <input class="form-control" name="chave" type="text" placeholder="Chave de segurança da máquina">
+	                </div>
+	              </div>
+	            </div>
+	            <!-- .\row-->
+	            <div class="float-right">
+	            	<button type="submit" class="btn btn-sm btn-primary">Cadastrar</button>
+	            </div>
+            </form>
+          </div>
+        </div>
+	</div>	
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{%  extends '../layout/master.html' %}
+{% block Titulo %}Cadastrar Tarefa{% endblock %}
+{% block corpo %}
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+          <div class="card-header">
+            <strong>Cadastrar uma nova máquina</strong>
+          </div>
+          <div class="card-body">
+          	{% if mensagem != "" %}
+          	<div class="alert alert-{{tipo}}" role="alert">{{mensagem}}</div>
+          	{% endif %}
+            <form method="post">
+            	{% csrf_token %}
+            	<div class="row">
+            		<div class="col-md-4">
+            			<div class="row">
+			              <div class="col-sm-12">
+			                <div class="form-group">
+			                  <label for="name">Titulo</label>
+			                  <input class="form-control" name="titulo" type="text" placeholder="Titulo do trabalho">
+			                </div>
+			              </div>
+			            </div>
+			            <!-- .\row-->
+			            <div class="row">
+			              <div class="col-sm-12">
+			                <div class="form-group">
+			                  <label for="name">Palavras para Pequisar</label>
+			                  <input class="form-control" name="keys" type="text" placeholder="Inserir palavras separadas por vírgula">
+			                </div>
+			              </div>
+			            </div>
+			            <!-- .\row-->
+            		</div>
+            		<div class="col-md-8">
+            			<div class="row">
+			              <div class="col-sm-12">
+			                <div class="form-group">
+			                  <label for="name">Texto</label>
+			                  <textarea class="form-control" name="conteudo" rows="9" placeholder="Texto para procurar"></textarea>
+			                </div>
+			              </div>
+			            </div>
+			            <!-- .\row-->
+            		</div>
+            	</div>
+	            
+	            
+	            <!-- .\row-->
+	            
+	            <div class="float-right">
+	            	<button type="submit" class="btn btn-sm btn-primary">Cadastrar</button>
+	            </div>
+            </form>
+          </div>
+        </div>
+	</div>	
+</div>
+{% endblock %}
