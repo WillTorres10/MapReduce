@@ -8,6 +8,7 @@ urlpatterns = [
     path('computador/cadastrar', computadorView.cadastrarRequest, name="cadastrarPC"),
     path('computador/listar', computadorView.listarComputadores, name="listarPC"),
     path('computador/validaPC', computadorView.validaComputador, name="validaPC"),
+    path('computador/salvaStatus', computadorView.salvarStatusComputador, name="statusPC"),
     path('tarefa/cadastrar', tarefaView.cadastrarRequest, name="cadastrarTarefa"),
 
     path('ajax/dadosComputador', computadorView.recuperarDadosComputador, name="recuperaPC"),

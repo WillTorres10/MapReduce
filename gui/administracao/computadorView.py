@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 
-from .models import computador
+from .models import computador, computadorstatus
 
 def cadastrarPOST(request):
     pc = computador()
@@ -56,7 +56,6 @@ def excluirComputador(request):
 def validaComputador(request):
     chavePC = request.POST.get('chave')
     ipPC = request.POST.get('ip')
-    # comp = computador.objects.filter(chave=chavePC)
     comp = computador.objects.filter(ip=ipPC).first()
     if comp:
         if comp.chave == chavePC:
@@ -65,3 +64,18 @@ def validaComputador(request):
             return JsonResponse({'valido': False}, safe=False)
     else:
         return JsonResponse({'valido': False}, safe=False)
+
+@csrf_exempt
+def salvarStatusComputador(request):
+    chavePC = request.POST.get('chave')
+    ipPC = request.POST.get('ip')
+    cpu = request.POST.get('cpu')
+    ram = request.POST.get('ram')
+    comp = computador.objects.filter(ip=ipPC).first()
+    if comp:
+        if comp.chave == chavePC:
+            pc = computadorstatus()
+            pc.id_pc = comp
+            pc.processador = cpu
+            pc.ram = ram
+            pc.save()

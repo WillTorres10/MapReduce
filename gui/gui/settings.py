@@ -25,7 +25,7 @@ SECRET_KEY = '$cv5fblg)#q^(0b_w4+qil2#p8r1e*$g9&ili@5_3+95t@5k(-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
