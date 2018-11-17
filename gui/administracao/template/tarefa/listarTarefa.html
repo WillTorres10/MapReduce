@@ -1,0 +1,54 @@
+{%  extends '../layout/master.html' %}
+{% block Titulo %}Listar Computadores{% endblock %}
+
+{% block modal %}
+ <!-- /.modal-->
+          <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title"><b>Configuração: <span id="tituloModal" style="color: #20a8d8"></span></b></h4>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="corpoModal">
+                	<div class="row">
+		                <!--Formulario-->
+		                <div class="col-md-5 mb-3">
+		                	Dados da máquina<br><br>
+		                	<div id="resposta">
+
+		                	</div>
+		                	<div id="dadosPC">
+
+		                	</div>
+		                </div>
+		                <!--\.Formulario-->
+		                <!--Gráficos-->
+		                <div class="col-md-7">
+		                	Gráficos
+		                </div>
+		                <!--\.Gráficos-->
+                  	</div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" onclick="window.location.reload(false);" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+              <!-- /.modal-content-->
+            </div>
+            <!-- /.modal-dialog-->
+          </div>
+          <!-- /.modal-->
+{% endblock %}
+
+{% block corpo %}
+<div class="row">
+	<div class="col-md-4">
+		<div class="card" >
+
+	    </div>
+    </div>
+</div>
+{% endblock %}

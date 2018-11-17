@@ -8,5 +8,5 @@
 <div class="form-group">
     <input class="form-control" type="text" name="chave" placeholder="Chave" value="{{computador.chave}}">
 </div>
-<button class="btn btn-primary float-left" type="button">Atualizar</button>
-<button class="btn btn-danger float-right" type="button">Excluir</button>
+<button class="btn btn-primary float-left" onclick="atualizarDadosComputador({{computador.id}})" type="button">Atualizar</button>
+<button class="btn btn-danger float-right" onclick="deletarComputador({{computador.id}})" type="button">Excluir</button>

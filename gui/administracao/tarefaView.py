@@ -24,3 +24,7 @@ def cadastrarRequest(request):
         return cadastrarPOST(request)
     else:
         return cadastrarGET(request)
+
+def listarComputadores(request):
+    tarefas = tarefa.objects.all()
+    return render(request, 'computador/listarComputador.html', {'tarefa': tarefas})

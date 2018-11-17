@@ -31,10 +31,10 @@
       </button>
       <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Inicio</a>
+          <a class="nav-link" href="/administracao">Inicio</a>
         </li>
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Computadores</a>
+          <a class="nav-link" href="/administracao/computador/listar">Computadores</a>
         </li>
         <li class="nav-item px-3">
           <a class="nav-link" href="#">Trabalhos</a>
@@ -62,7 +62,7 @@
         <nav class="sidebar-nav">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="/administracao">
                 <i class="nav-icon fa fa-home"></i> Inicio
               </a>
             </li>
@@ -81,7 +81,7 @@
                 <i class="nav-icon fa fa-eye"></i> Visualizar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="typography.html">
+              <a class="nav-link" href="/administracao/tarefa/cadastrar">
                 <i class="nav-icon fa fa-plus"></i> Criar</a>
             </li>
           </ul>
@@ -105,17 +105,17 @@
         <a href="https://github.com/WillTorres10/MapReduce" target="_blank">Github</a>
       </div>
     </footer>
-    <!-- CoreUI and necessary plugins-->
-    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
-    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'node_modules/pace-progress/pace.min.js' %}"></script>
-    <script src="{% static 'node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js' %}"></script>
-    <script src="{% static 'node_modules/@coreui/coreui/dist/js/coreui.min.js' %}"></script>
-    <!-- Plugins and scripts required by this view-->
-    <script src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
-    <script src="{% static 'node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js' %}"></script>
-    <!-- AJAX para uso do sistema -->
-    <script src="{% static 'js/administracao.js' %}"></script>
   </body>
+  <!-- CoreUI and necessary plugins-->
+  <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+  <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'node_modules/pace-progress/pace.min.js' %}"></script>
+  <script src="{% static 'node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js' %}"></script>
+  <script src="{% static 'node_modules/@coreui/coreui/dist/js/coreui.min.js' %}"></script>
+  <!-- Plugins and scripts required by this view-->
+  <script src="{% static 'node_modules/chart.js/dist/Chart.min.js' %}"></script>
+  <script src="{% static 'node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js' %}"></script>
+  <!-- AJAX para uso do sistema -->
+  <script src="{% static 'js/administracao.js' %}"></script>
 </html>
