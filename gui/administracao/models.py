@@ -16,7 +16,6 @@ class computadorstatus(models.Model):
 
 class pilhaprocessos(models.Model):
     status_processo = models.IntegerField()
-    id_computador = models.ForeignKey(computador, models.DO_NOTHING)
     id_tarefa = models.ForeignKey('tarefa', models.DO_NOTHING)
 
 class tarefa(models.Model):
@@ -25,4 +24,5 @@ class tarefa(models.Model):
 
 class tarefapalavras(models.Model):
     palavra = models.CharField(max_length=50)
+    vezes = models.IntegerField(default=0)
     id_tarefa = models.ForeignKey(tarefa, models.DO_NOTHING)

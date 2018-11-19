@@ -64,3 +64,53 @@ function deletarComputador(idComputador){
         }
 	});
 }
+
+
+function buscarDadosTarefa(idTarefa){
+  var csrf = $('meta[name=csrf-token]').attr("content");
+  $.ajax({
+      method: 'POST',
+        url: '/administracao/ajax/dadosTarefa',
+        dataType: 'json',
+        data: {
+            'id': idTarefa,
+            'csrfmiddlewaretoken': csrf,
+        },
+        success: function (data) {
+            $('#corpoModal').html(data['html']);
+            $('#tituloModal').html(data['titulo']);
+        },
+        error: function(jqXHR,error, errorThrown) {
+          $('#resposta').html(jqXHR);
+          console.log('===========ERRO============');
+          console.log(jqXHR);
+        }
+    });
+}
+
+
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [10,9,8,7,6,5,4,3,2,1],
+    datasets: [{ 
+        data: [50, 25.5, 82, 1, 1.5, 60],
+        backgroundColor: [
+                'rgba(62,149,205, 0.5)',
+        ],
+        label: "CPU",
+        borderColor: "#3e95cd",
+        fill: true
+      }, { 
+        data: [50, 4, 82, 6, 3.5, 100],
+        backgroundColor: [
+                'rgba(142,94,162, 0.5)',
+        ],
+        label: "RAM",
+        borderColor: "#8e5ea2",
+        fill: true
+      },
+    ]
+  }
+});

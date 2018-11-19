@@ -7,30 +7,13 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title"><b>Configuração: <span id="tituloModal" style="color: #20a8d8"></span></b></h4>
+                  <h4 class="modal-title"><b>Trabalho: <span id="tituloModal" style="color: #20a8d8"></span></b></h4>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                   </button>
                 </div>
                 <div class="modal-body" id="corpoModal">
-                	<div class="row">
-		                <!--Formulario-->
-		                <div class="col-md-5 mb-3">
-		                	Dados da máquina<br><br>
-		                	<div id="resposta">
-
-		                	</div>
-		                	<div id="dadosPC">
-
-		                	</div>
-		                </div>
-		                <!--\.Formulario-->
-		                <!--Gráficos-->
-		                <div class="col-md-7">
-		                	Gráficos
-		                </div>
-		                <!--\.Gráficos-->
-                  	</div>
+                  
                 </div>
                 <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" onclick="window.location.reload(false);" data-dismiss="modal">Fechar</button>
@@ -45,10 +28,42 @@
 
 {% block corpo %}
 <div class="row">
-	<div class="col-md-4">
-		<div class="card" >
+	<div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card border-success">
+          <div class="card-header"> Tarefas já finalizadas</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-primary">
+          <div class="card-header"> Tarefas ainda não finalizadas</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        {% for taref in tarefa %}
+        <div class="col-md-4">
+          <div class="card border-secondary">
+          <div class="card-header">{{taref.titulo}}
+            <div class="card-header-actions">
+              <a class="card-header-action btn-setting" onclick="buscarDadosTarefa({{taref.id}})" data-toggle="modal" data-target="#largeModal">
+                <i class="icon-settings"></i>
+              </a>
+              <a class="card-header-action btn-minimize" href="#" data-toggle="collapse" data-target="#collapse{{taref.id}}" aria-expanded="false">
+                <i class="icon-arrow-up"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card-body collapse" id="collapse{{taref.id}}">
+            {{taref.conteudo|truncatechars:300}}
+          </div>
+          </div>
+        </div>
+        {% endfor %}
 
-	    </div>
+        
+      </div>
     </div>
 </div>
 {% endblock %}

@@ -29,11 +29,21 @@ def listarComputadores(request):
     pc = computador.objects.all()
     return render(request, 'computador/listarComputador.html', {'pc':pc})
 
+def carregarStatusPC(idComputador):
+    pc = computadorstatus.objects.filter(id_pc=idComputador).order_by('-id')[:10]
+    cpu, ram = list(), list()
+    if pc:
+        for p in pc:
+            cpu.append(p.processador)
+            ram.append(p.ram)
+    return cpu, ram
+@csrf_exempt
 def recuperarDadosComputador(request):
     idComputador = request.POST.get('idComputador')
     comp = computador.objects.get(id=idComputador)
-    html = render_to_string('ajax/listarComputador.html', {'computador': comp})
-    return JsonResponse({'html':html, 'titulo':comp.nome})
+    #cpu, ram = carregarStatusPC()
+    html = render_to_string('ajax/listarComputador.html', {'computador': comp,})
+    return JsonResponse({'html' :html, 'titulo': comp.nome})
 
 def atualizarDadosComputador(request):
     idComputador = request.POST.get('idComputador')
