@@ -45,28 +45,37 @@ def carregarTarefaModal(request):
     ta = tarefa.objects.get(id=idTarefa)
     palavras = gerarStringPalavras(tarefapalavras.objects.filter(id_tarefa=idTarefa))
     taPilha = pilhaprocessos.objects.get(id_tarefa=idTarefa)
-    mensagem = render_to_string('ajax/listarTarefa.html', {'tarefa': ta, 'pilha':taPilha, 'palavras': palavras})
-    return JsonResponse({'html' :mensagem, 'titulo': ta.titulo})
+    if taPilha.status_processo == 0:
+        mensagem = render_to_string('ajax/listarTarefa.html', {'tarefa': ta, 'pilha':taPilha, 'palavras': palavras})
+        return JsonResponse({'html' :mensagem, 'titulo': ta.titulo})
+    else:
+        pals = tarefapalavras.objects.filter(id_tarefa=idTarefa)
+        palavrasResult = list()
+        for p in pals:
+            palavrasResult.append({'palavra':p.palavra, 'vezes': p.vezes})
+        mensagem = render_to_string('ajax/listarTarefa.html', {'tarefa': ta, 'pilha':taPilha, 'palavras': palavras, 'resultado': palavrasResult})
+        return JsonResponse({'html' :mensagem, 'titulo': ta.titulo})
 
-def visualizarTarefaGET(request):
-    tarefas = tarefa.objects.all()
-    return render(request, 'tarefa/listarTarefa.html', {'tarefa': tarefas})
-
-def visualizarTarefaPOST(request):
-    return None
+def carregarVizualizacaoGet(tarefas):
+    retorno = list()
+    for i in tarefas:
+        status = "primary"
+        pilha = pilhaprocessos.objects.get(id_tarefa_id=i.id)
+        if pilha.status_processo == 1:
+            status = "success"
+        retorno.append({'id': i.id, 'titulo': i.titulo, 'conteudo': i.conteudo, 'status': status})
+    return  retorno
 
 def visualizarTarefa(request):
-    if request.method == "POST":
-        return visualizarTarefaPOST(request)
-    else:
-        return visualizarTarefaGET(request)
+    enviar = carregarVizualizacaoGet(tarefa.objects.all())
+    return render(request, 'tarefa/listarTarefa.html', {'tarefa': enviar})
 #############################################################
 def listarComputadores(request):
     tarefas = tarefa.objects.all()
     return render(request, 'computador/listarComputador.html', {'tarefa': tarefas})
 
 def carregarTarefa(idTarefa):
-    tf = tarefa.objects.filter(idTarefa).get
+    tf = tarefa.objects.get(idTarefa)
     palavras = list()
     pala = tarefapalavras.objects.get(id_tarefa=idTarefa)
     for pa in pala:

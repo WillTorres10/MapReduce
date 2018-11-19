@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <div class="form-group">
           <label for="name">Titulo</label>
-          <input class="form-control" name="titulo" type="text" value="{{tarefa.titulo}}" placeholder="Titulo do trabalho">
+          <input class="form-control" name="titulo" readonly type="text" value="{{tarefa.titulo}}" placeholder="Titulo do trabalho">
         </div>
       </div>
     </div>
@@ -13,7 +13,7 @@
       <div class="col-sm-12">
         <div class="form-group">
           <label for="name">Palavras para Pequisar</label>
-          <input class="form-control" name="keys" type="text" value="{{palavras}}" placeholder="Inserir palavras separadas por vírgula">
+          <input class="form-control" name="keys" type="text" readonly value="{{palavras}}" placeholder="Inserir palavras separadas por vírgula">
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="col-sm-12">
         <div class="form-group">
           <label for="name">Texto</label>
-          <textarea class="form-control" name="conteudo" rows="9" placeholder="Texto para procurar">{{tarefa.conteudo}}
+          <textarea class="form-control" name="conteudo" rows="9" readonly placeholder="Texto para procurar">{{tarefa.conteudo}}
           </textarea>
         </div>
       </div>
@@ -32,3 +32,16 @@
     <!-- .\row-->
   </div>
 </div>
+{% if pilha.status_processo == 1 %}
+<hr />
+<div class="row p-3">
+  Resultado
+</div>
+<div class="row p-3">
+  {% for r in resultado %}
+    <span class="mr-3">
+      <b>{{r.palavra}}:</b><span style="color:#20a8d8"> {{r.vezes}}</span>
+    </span>
+  {% endfor %}
+</div>
+{% endif %}

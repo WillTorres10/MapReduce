@@ -16,7 +16,7 @@
                   
                 </div>
                 <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" onclick="window.location.reload(false);" data-dismiss="modal">Fechar</button>
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
               <!-- /.modal-content-->
@@ -44,7 +44,7 @@
     <div class="row">
         {% for taref in tarefa %}
         <div class="col-md-4">
-          <div class="card border-secondary">
+          <div class="card border-{{taref.status}}">
           <div class="card-header">{{taref.titulo}}
             <div class="card-header-actions">
               <a class="card-header-action btn-setting" onclick="buscarDadosTarefa({{taref.id}})" data-toggle="modal" data-target="#largeModal">

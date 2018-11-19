@@ -1,5 +1,7 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
+
 from .forms import *
 from django.urls import reverse
 from django.shortcuts import render, redirect
@@ -29,7 +31,7 @@ def signup(request):
 @csrf_exempt
 def acessar(request, *args, **kwargs):
     if request.user.is_authenticated:
-        return redirect('administracao:padrao')
+        return redirect('/administracao/')
     else:
         if request.method == 'POST':
             userName = request.POST.get('user')
@@ -37,8 +39,12 @@ def acessar(request, *args, **kwargs):
             user = authenticate(username=userName, password=password)
             if user is not None:
                 login(request, user)
-                return render(request, 'login.html', {'mensagem': "", 'sucesso': "Logado com sucesso"})
+                return redirect('/administracao/')
             else:
                 return render(request, 'login.html', {'mensagem': "Erro ao autenticar, verifique suas credenciais", 'sucesso': ""})
         else:
             return render(request, 'login.html', {'mensagem': "", 'sucesso': ""})
+
+def logout_view(request):
+    logout(request)
+    return redirect('/usuario/acessar')
