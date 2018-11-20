@@ -28,7 +28,9 @@
 		                <!--Gráficos-->
 		                <div class="col-md-7">
 		                	Gráficos
-		                	<canvas id="myChart" width="400" height="200"></canvas>
+		                	<div id="grafico">
+		                		<canvas id="myChart" width="400" height="200"></canvas>
+		                	</div>
 
 		                </div>
 		                <!--\.Gráficos-->
@@ -49,12 +51,24 @@
 <div class="row">
 	{% for computador in pc%}
 	<div class="col-md-4">
-		<div class="card" >
+		{% if computador.status == 0 %}
+		<div class="card border-danger" >
+		{% else %}
+		<div class="card border-success" >
+		{% endif %}
 	      <div class="card-body p-3 d-flex align-items-center">
-	        <i class="fa fa-laptop bg-primary p-3 font-2xl mr-3"></i>
+	      	{% if computador.status == 0 %}
+	          	<i class="fa fa-laptop bg-danger p-3 font-2xl mr-3"></i>
+          	{% else %}
+          		<i class="fa fa-laptop bg-success p-3 font-2xl mr-3"></i>
+          	{% endif %}        
 	        <div>
-	          <div class="text-value-sm text-primary">{{ computador.nome }}</div>
-	          <div class="text-muted text-uppercase font-weight-bold small">{{computador.ip}}</div>
+	        	{% if computador.status == 0 %}
+	          	<div class="text-value-sm text-danger">{{ computador.nome }}</div>
+	          	{% else %}
+	          	<div class="text-value-sm text-success">{{ computador.nome }}</div>
+	          	{% endif %}
+	          	<div class="text-muted text-uppercase font-weight-bold small">{{computador.ip}}</div>
 	        </div>
 	      </div>
 	      <div class="card-footer px-3 py-2">

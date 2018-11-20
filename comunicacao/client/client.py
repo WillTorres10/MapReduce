@@ -17,7 +17,7 @@ from comunicacao.shared.statusPC import status
 from comunicacao.client.receberTarefa import receberTarefa
 import _pickle as cPickle
 
-HOST = '192.168.0.100'     # Endereco IP do Servidor
+HOST = '10.180.14.5'     # Endereco IP do Servidor
 PORT = 8002              # Porta que o Servidor esta
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 dest = (HOST, PORT)

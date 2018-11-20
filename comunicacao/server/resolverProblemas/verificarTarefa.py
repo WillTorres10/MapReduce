@@ -20,15 +20,22 @@ class verificarTarefa(threading.Thread):
         self.threads = threads
         self.tarefasExecutando = list()
 
+    def verificaThreads(self):
+        for con in self.threads:
+            if not con['thread'].isAlive():
+                requests.post('http://localhost:8000/administracao/computador/offStatus', data={"ip": con['ip']})
+                self.threads.remove(con)
+
     def escolherMelhorMaquina(self):
         calculos = list()
         for th in self.threads:
-            calculos.append({'thread': th, 'calculo': ((th.cpu*2 + th.ram*1)/3)})
+            calculos.append({'thread': th['thread'], 'calculo': ((th.cpu*2 + th.ram*1)/3)})
         calculos = sorted(calculos, key=lambda k: k['calculo'])
         return calculos[0]['thread']
 
     def run(self):
         while True:
+            self.verificaThreads()
             if len(self.threads) > 0:
                 print('Verificando tarefas')
                 resposta = requests.post('http://localhost:8000/administracao/tarefa/verificarTerfas')

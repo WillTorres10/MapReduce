@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 from .models import computador, computadorstatus
 
@@ -30,20 +32,32 @@ def listarComputadores(request):
     return render(request, 'computador/listarComputador.html', {'pc':pc})
 
 def carregarStatusPC(idComputador):
-    pc = computadorstatus.objects.filter(id_pc=idComputador).order_by('-id')[:10]
+    pc = computadorstatus.objects.filter(id_pc=idComputador).order_by('-id')[:11]
     cpu, ram = list(), list()
     if pc:
         for p in pc:
             cpu.append(p.processador)
             ram.append(p.ram)
-    return cpu, ram
+    return json.dumps(cpu, cls=DjangoJSONEncoder), json.dumps(ram, cls=DjangoJSONEncoder)
+
+@csrf_exempt
+def carregarStatusPCRealTime(request):
+    idComputador = request.POST.get('idComputador')
+    pc = computadorstatus.objects.filter(id_pc=idComputador).order_by('-id')[:2]
+    cpu, ram = list(), list()
+    if pc:
+        for p in pc:
+            cpu.append(p.processador)
+            ram.append(p.ram)
+    return JsonResponse({'cpu':json.dumps(cpu, cls=DjangoJSONEncoder), 'ram':json.dumps(ram, cls=DjangoJSONEncoder)})
+
 @csrf_exempt
 def recuperarDadosComputador(request):
     idComputador = request.POST.get('idComputador')
     comp = computador.objects.get(id=idComputador)
-    #cpu, ram = carregarStatusPC()
+    cpu, ram = carregarStatusPC(idComputador)
     html = render_to_string('ajax/listarComputador.html', {'computador': comp,})
-    return JsonResponse({'html' :html, 'titulo': comp.nome})
+    return JsonResponse({'html' :html, 'titulo': comp.nome,'status': comp.status, 'cpu': cpu, 'ram':ram})
 
 def atualizarDadosComputador(request):
     idComputador = request.POST.get('idComputador')
@@ -58,6 +72,7 @@ def atualizarDadosComputador(request):
 def excluirComputador(request):
     idComputador = request.POST.get('idComputador')
     comp = computador.objects.get(id=idComputador)
+    status = computadorstatus.objects.filter(id_pc=idComputador).delete()
     comp.delete()
     html = '<div class="alert alert-success" role="alert">Máquina excluida com sucesso!</div>'
     return JsonResponse(html, safe=False)
@@ -69,11 +84,21 @@ def validaComputador(request):
     comp = computador.objects.filter(ip=ipPC).first()
     if comp:
         if comp.chave == chavePC:
+            comp.status = 1
+            comp.save()
             return JsonResponse({'valido': True}, safe=False)
         else:
             return JsonResponse({'valido': False}, safe=False)
     else:
         return JsonResponse({'valido': False}, safe=False)
+
+@csrf_exempt
+def statusOff(request):
+    ipPC = request.POST.get('ip')
+    comp = computador.objects.get(ip=ipPC)
+    comp.status = 0
+    comp.save()
+    return HttpResponse("nada")
 
 @csrf_exempt
 def salvarStatusComputador(request):

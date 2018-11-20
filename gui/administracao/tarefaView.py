@@ -54,7 +54,8 @@ def carregarTarefaModal(request):
         palavrasResult = list()
         for p in pals:
             palavrasResult.append({'palavra':p.palavra, 'vezes': p.vezes})
-        mensagem = render_to_string('ajax/listarTarefa.html', {'tarefa': ta, 'pilha':taPilha, 'palavras': palavras, 'resultado': palavrasResult})
+        mensagem = render_to_string('ajax/listarTarefa.html', {'tarefa': ta, 'pilha':taPilha, 'palavras': palavras, 'resultado': palavrasResult,
+                                                               'tempo':taPilha.tempo})
         return JsonResponse({'html' :mensagem, 'titulo': ta.titulo})
 
 def carregarVizualizacaoGet(tarefas):

@@ -11,7 +11,7 @@
     aguardando a chamada para criar a thread para lidar com um trabalho.
     /------------------------------------------------------------------------------------------------------------------/
 """
-import _pickle as cPickle, requests
+import _pickle as cPickle, requests, time
 import threading
 from .resolverProblemas.execultarTarefaThread import execultarTarefaThread
 
@@ -21,16 +21,21 @@ class threadServer(threading.Thread):
     def __init__(self, con, client):
         threading.Thread.__init__(self)
         self.con = con
+        self.ip = client[0]
         self.cliente = client
 
     def enviarTrabalho(self, trabalho):
         th = execultarTarefaThread(self.con, trabalho)
         th.start()
 
+    def retornarIP(self):
+        return self.ip
+
     def run(self):
         chave = cPickle.loads(self.con.recv(4000))
         resposta = requests.post('http://localhost:8000/administracao/computador/validaPC', data={"chave":chave, 'ip':self.cliente[0]})
         dados = resposta.json()
+        time.sleep(10)
         if dados['valido'] == True:
             try:
                 while True:

@@ -22,17 +22,20 @@ class execultarTarefaThread(threading.Thread):
         self.tarefa = tarefa
 
     def run(self):
-        self.maquina.send(cPickle.dumps(self.tarefa))
+        start_time = time.time()
+        enviar = cPickle.dumps(self.tarefa)
+        self.maquina.send(enviar)
         print("enviado")
-        parada = True
-        while parada:
-            retorno = cPickle.loads(self.maquina.recv(60000))
+        while True:
+            retorno = cPickle.loads(self.maquina.recv(4028))
             if retorno[0]['tipo'] == 'retorno':
                 enviar = json.dumps(retorno)
+                end_time = time.time()
 
                 resposta = requests.post('http://localhost:8000/administracao/tarefa/salvarTarefa',
                                          data={
                                              "palavras": enviar,
+                                             'tempo': (end_time-start_time)
                                            })
                 print("Resolvido")
-                parada = False
+                break

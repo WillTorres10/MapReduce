@@ -16,6 +16,7 @@ class computadorstatus(models.Model):
 
 class pilhaprocessos(models.Model):
     status_processo = models.IntegerField()
+    tempo = models.FloatField(default=0.0)
     id_tarefa = models.ForeignKey('tarefa', models.DO_NOTHING)
 
 class tarefa(models.Model):

@@ -23,6 +23,7 @@ class receberTarefa(threading.Thread):
 
     def run(self):
         while True:
-            trabalho = cPickle.loads(self.con.recv(1024))
+            recebido = self.con.recv(4028)
+            trabalho = cPickle.loads(recebido)
             rt = realizarTarefa(trabalho, self.con)
             rt.start()

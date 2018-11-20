@@ -9,6 +9,7 @@ urlpatterns = [
     path('computador/listar', computadorView.listarComputadores, name="listarPC"),
     path('computador/validaPC', computadorView.validaComputador, name="validaPC"),
     path('computador/salvaStatus', computadorView.salvarStatusComputador, name="statusPC"),
+    path('computador/offStatus', computadorView.statusOff, name="offPC"),
 
     path('tarefa/cadastrar', tarefaView.cadastrarRequest, name="cadastrarTarefa"),
     path('tarefa/visualizarTarefa', tarefaView.visualizarTarefa, name="visualizarTarefa"),
@@ -17,6 +18,7 @@ urlpatterns = [
 
 
     path('ajax/dadosComputador', computadorView.recuperarDadosComputador, name="recuperaPC"),
+    path('ajax/dadosComputadorRealTime', computadorView.carregarStatusPCRealTime, name="RealTimePC"),
     path('ajax/atualizarComputador', computadorView.atualizarDadosComputador, name="atualizarPC"),
     path('ajax/deletarComputador', computadorView.excluirComputador, name="deletarPC"),
     path('ajax/dadosTarefa', tarefaView.carregarTarefaModal, name="recuperaTarefa"),
