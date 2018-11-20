@@ -18,20 +18,27 @@ class verificarTarefa(threading.Thread):
     def __init__(self, threads):
         threading.Thread.__init__(self)
         self.threads = threads
+        self.tarefasExecutando = list()
 
     def escolherMelhorMaquina(self):
         calculos = list()
         for th in self.threads:
             calculos.append({'thread': th, 'calculo': ((th.cpu*2 + th.ram*1)/3)})
-        calculos.sort(key=lambda x: x[1])
+        calculos = sorted(calculos, key=lambda k: k['calculo'])
         return calculos[0]['thread']
 
     def run(self):
-        resposta = requests.post('http://localhost:8000/administracao/tarefa/verificarTerfas')
-        print(resposta.content)
-        resposta = resposta.json()
-        if resposta['tarefas']:
-            for job in resposta['trabalhos']:
-                maquina = self.escolherMelhorMaquina()[0]
-                maquina.enviarTrabalho(job)
-        time.sleep(5)
+        while True:
+            if len(self.threads) > 0:
+                print('Verificando tarefas')
+                resposta = requests.post('http://localhost:8000/administracao/tarefa/verificarTerfas')
+                resposta = resposta.json()
+                if resposta['tarefas']:
+                    for job in resposta['trabalhos']:
+                        if job not in self.tarefasExecutando:
+                            maquina = self.escolherMelhorMaquina()
+                            maquina.enviarTrabalho(job)
+                            self.tarefasExecutando.append(job)
+                        else:
+                            pass
+            time.sleep(2)

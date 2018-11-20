@@ -1,8 +1,9 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from .models import tarefa, tarefapalavras, pilhaprocessos
+import json
 
 def cadastrarPOST(request):
     job = tarefa()
@@ -75,21 +76,37 @@ def listarComputadores(request):
     return render(request, 'computador/listarComputador.html', {'tarefa': tarefas})
 
 def carregarTarefa(idTarefa):
-    tf = tarefa.objects.get(idTarefa)
+    tf = tarefa.objects.filter(id=idTarefa).first()
     palavras = list()
-    pala = tarefapalavras.objects.get(id_tarefa=idTarefa)
+    pala = tarefapalavras.objects.filter(id_tarefa=idTarefa).values()
     for pa in pala:
-        palavras.append({'id':pa.id, "palavra":pa.palavra})
-    return {'idTarega': tf.id, 'contudo': tf.conteudo, 'palavras': palavras}
+        pa['palavra'].replace(' ', '')
+        palavras.append({'id':pa['id'], "palavra":pa['palavra']})
+    return {'idTarefa': tf.id, 'conteudo': tf.conteudo, 'palavras': palavras}
 
 @csrf_exempt
 def verificarTarefas(request):
-    abertos = pilhaprocessos.objects.filter(status_processo=0)
+    abertos = pilhaprocessos.objects.filter(status_processo=0).values()
     if abertos:
         trabalhos = list()
         for job in abertos:
-            trabalhos.append(carregarTarefa(job))
-        return {'tarefas': True, 'trabalhos': trabalhos}
+            trabalhos.append(carregarTarefa(job['id_tarefa_id']))
+        return JsonResponse({'tarefas': True, 'trabalhos': trabalhos})
     else:
-        return {'tarefas': False}
-
+        return JsonResponse({'tarefas': False})
+@csrf_exempt
+def salvarPalavras(request):
+    palavras = request.POST.get('palavras')
+    palavrasDict = json.loads(palavras)
+    idTrabalho = 0
+    for i in palavrasDict:
+        print(i)
+        pal = tarefapalavras.objects.get(id=i['idPalavra'])
+        idTrabalho = pal.id_tarefa_id
+        pal.vezes = i['quantidade']
+        pal.save()
+    print(idTrabalho)
+    pil = pilhaprocessos.objects.filter(id_tarefa_id=idTrabalho).first()
+    pil.status_processo = 1
+    pil.save()
+    return HttpResponse('nada')

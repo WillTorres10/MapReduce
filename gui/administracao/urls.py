@@ -13,6 +13,8 @@ urlpatterns = [
     path('tarefa/cadastrar', tarefaView.cadastrarRequest, name="cadastrarTarefa"),
     path('tarefa/visualizarTarefa', tarefaView.visualizarTarefa, name="visualizarTarefa"),
     path('tarefa/verificarTerfas', tarefaView.verificarTarefas, name="verificarTarefa"),
+    path('tarefa/salvarTarefa', tarefaView.salvarPalavras, name="SalvarPalavrasTarefa"),
+
 
     path('ajax/dadosComputador', computadorView.recuperarDadosComputador, name="recuperaPC"),
     path('ajax/atualizarComputador', computadorView.atualizarDadosComputador, name="atualizarPC"),

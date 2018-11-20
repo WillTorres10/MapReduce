@@ -16,7 +16,7 @@ def verificaThreads(conectados):
     return conectados
 
 HOST = '192.168.0.100'              # Endereco IP do Servidor
-PORT = 8001                       # Porta que o Servidor esta
+PORT = 8002                       # Porta que o Servidor esta
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 orig = (HOST, PORT)
 tcp.bind(orig)

@@ -14,16 +14,19 @@
 '''
 import socket, time
 from comunicacao.shared.statusPC import status
+from comunicacao.client.receberTarefa import receberTarefa
 import _pickle as cPickle
 
-HOST = '10.180.14.5'     # Endereco IP do Servidor
-PORT = 8001              # Porta que o Servidor esta
+HOST = '192.168.0.100'     # Endereco IP do Servidor
+PORT = 8002              # Porta que o Servidor esta
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 dest = (HOST, PORT)
 tcp.connect(dest)
 msg = "dsdfsdfsdf"
 msgS = cPickle.dumps(msg)
 tcp.send(msgS)
+receber = receberTarefa(tcp)
+receber.start()
 while True:
     try:
         msg = status()

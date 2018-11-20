@@ -89,3 +89,4 @@ def salvarStatusComputador(request):
             pc.processador = cpu
             pc.ram = ram
             pc.save()
+    return HttpResponse('nada')
