@@ -98,6 +98,7 @@ def verificarTarefas(request):
 @csrf_exempt
 def salvarPalavras(request):
     palavras = request.POST.get('palavras')
+    tempo = request.POST.get('tempo')
     palavrasDict = json.loads(palavras)
     idTrabalho = 0
     for i in palavrasDict:
@@ -109,5 +110,6 @@ def salvarPalavras(request):
     print(idTrabalho)
     pil = pilhaprocessos.objects.filter(id_tarefa_id=idTrabalho).first()
     pil.status_processo = 1
+    pil.tempo = tempo
     pil.save()
     return HttpResponse('nada')
