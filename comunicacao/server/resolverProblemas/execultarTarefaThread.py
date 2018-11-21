@@ -12,7 +12,7 @@
     Ela é chamada a máquina recebe alguma tarefa
     /------------------------------------------------------------------------------------------------------------------/
 '''
-import threading, _pickle as cPickle, json, requests, time
+import threading, _pickle as cPickle1, json, requests, time, pickle as cPickle
 
 class execultarTarefaThread(threading.Thread):
 
@@ -23,19 +23,22 @@ class execultarTarefaThread(threading.Thread):
 
     def run(self):
         start_time = time.time()
-        enviar = cPickle.dumps(self.tarefa)
-        self.maquina.send(enviar)
+        enviar = cPickle.dumps(self.tarefa, protocol=cPickle.HIGHEST_PROTOCOL)
+        self.maquina.sendall(enviar)
         print("enviado")
         while True:
             retorno = cPickle.loads(self.maquina.recv(4028))
-            if retorno[0]['tipo'] == 'retorno':
-                enviar = json.dumps(retorno)
-                end_time = time.time()
+            try:
+                if retorno[0]['tipo'] == 'retorno':
+                    enviar = json.dumps(retorno)
+                    end_time = time.time()
 
-                resposta = requests.post('http://localhost:8000/administracao/tarefa/salvarTarefa',
-                                         data={
-                                             "palavras": enviar,
-                                             'tempo': (end_time-start_time)
-                                           })
-                print("Resolvido")
-                break
+                    resposta = requests.post('http://localhost:8000/administracao/tarefa/salvarTarefa',
+                                             data={
+                                                 "palavras": enviar,
+                                                 'tempo': (end_time-start_time)
+                                               })
+                    print("Resolvido")
+                    break
+            except:
+                continue

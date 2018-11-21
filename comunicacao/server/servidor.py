@@ -5,7 +5,7 @@ from comunicacao.server.resolverProblemas.verificarTarefa import verificarTarefa
 class servidor:
 
     def __init__(self):
-        self.HOST = '10.180.14.5'  # Endereco IP do Servidor
+        self.HOST = '10.180.84.20'  # Endereco IP do Servidor
         self.PORT = 8002  # Porta que o Servidor esta
         self.tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.orig = (self.HOST, self.PORT)

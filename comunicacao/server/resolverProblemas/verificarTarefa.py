@@ -29,7 +29,7 @@ class verificarTarefa(threading.Thread):
     def escolherMelhorMaquina(self):
         calculos = list()
         for th in self.threads:
-            calculos.append({'thread': th['thread'], 'calculo': ((th.cpu*2 + th.ram*1)/3)})
+            calculos.append({'thread': th['thread'], 'calculo': ((th['thread'].cpu*2 + th['thread'].ram*1)/3)})
         calculos = sorted(calculos, key=lambda k: k['calculo'])
         return calculos[0]['thread']
 
